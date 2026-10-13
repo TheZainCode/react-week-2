@@ -1,22 +1,7 @@
-import { getPosts } from "../services/postService";
-import { useState, useEffect } from "react";
+import usePosts from "../hooks/usePosts";
 function Posts(){
-    const [posts, setPosts]=useState([]);
-    const [loading, setLoading]=useState(true);
-    const [error, setError]=useState("");
-    useEffect(()=>{
-        async function fetchPosts(){
-            try{
-           const data=await getPosts();
-           setPosts(data);
-            }catch(err){
-                setError(err.message);
-            }finally{
-                setLoading(false);
-            }
-        }
-        fetchPosts();
-    },[]);
+    const { posts, loading, error } = usePosts();
+
     return(
         <main className="mx-auto max-w-3xl p-6 space-y-4">
             <h1 className="text-3xl font-bold text-blue-600">
