@@ -1,5 +1,8 @@
+import  { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import { Link, NavLink } from "react-router-dom";
 function Navbar(){
+    const { user } = useContext(UserContext);
     const getLinkClass=({isActive}) =>
         `rounded-md px-3 py-2 transition ${isActive ? "bg-blue-600 text-white" : "bg-gray-700 hover:bg-gray-200"}`;
     return(
@@ -12,6 +15,9 @@ function Navbar(){
                 <NavLink to="/tasks" className={getLinkClass}>Tasks</NavLink>
                 <NavLink to="/about" className={getLinkClass}>About</NavLink>
             </div> 
+            <div className="font-semibold text-amber-400">
+               {user ? `Welcome, ${user.name}!` : "Welcome, Guest!"}
+            </div>
         </nav>
     )
 }
