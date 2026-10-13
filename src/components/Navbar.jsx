@@ -8,7 +8,7 @@ function Navbar(){
     function handleUpdateName(){
         setUser((prevUser) =>({
             ...prevUser,
-            name: "React Developer"
+            name: prevUser.name==="Zain" ? "React Developer" : "Zain"
     }));
     }
     return(
