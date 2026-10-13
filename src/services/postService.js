@@ -1,6 +1,6 @@
 const API_URL="https://jsonplaceholder.typicode.com/posts";
-export async function getPosts(){
-    const response=await fetch(API_URL);
+export async function getPosts(signal = null){
+    const response=await fetch(API_URL, {signal});
     if(!response.ok){
         throw new Error("Failed to fetch posts.");
     }

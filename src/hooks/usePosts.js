@@ -5,17 +5,27 @@ function usePosts(){
     const [error, setError]=useState("");
     const [loading, setLoading]=useState(true);
     useEffect(()=>{
+        const controller=new AbortController();
+
         async function fetchPosts(){
             try{
-                const data=await getPosts();
+                const data=await getPosts(controller.signal);
                 setPosts(data);
-            }catch(err){
+            } catch (err) {
+                if (err.name === "AbortError") {
+                    return;
+                }
                 setError(err.message);
-            }finally{
-                setLoading(false);
+            } finally {
+                if (!controller.signal.aborted) {
+                    setLoading(false);
+                }
             }
         }
+
         fetchPosts();
+
+        return () => controller.abort();
     },[]);
     return { posts, loading, error};
 }
