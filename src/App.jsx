@@ -9,6 +9,7 @@ import UserProvider from "./context/UserProvider";
 import AuthProvider from "./context/AuthProvider";
 import Login from "./pages/Login";
 import ProtectRoute from "./components/ProtectRoute";
+import ToggleDemo from "./components/ToggleDemo";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/posts" element={<Posts />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <ToggleDemo />
     </UserProvider>
     </AuthProvider>
   );
