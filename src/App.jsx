@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Tasks from "./pages/Tasks";
@@ -6,9 +6,12 @@ import About from "./pages/About";
 import TaskDetails from "./pages/TaskDetails";
 import Posts from "./pages/Posts";
 import UserProvider from "./context/UserProvider";
+import AuthProvider from "./context/AuthProvider";
+import Login from "./pages/Login";
 
 function App() {
   return (
+    <AuthProvider>
     <UserProvider>
       <Navbar />
       <Routes>
@@ -17,8 +20,10 @@ function App() {
         <Route path="/tasks/:id" element={<TaskDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/posts" element={<Posts />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </UserProvider>
+    </AuthProvider>
   );
 }
 
