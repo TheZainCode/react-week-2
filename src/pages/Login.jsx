@@ -1,7 +1,6 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import useAuth from "../hooks/useAuth";
 function Login(){
-    const { user, login, logout, isAuthenticated }= useContext(AuthContext);
+    const {user, login, logout, isAuthenticated }= useAuth();
     return(
         <div className="flex flex-wrap p-6">
         {isAuthenticated ? (
