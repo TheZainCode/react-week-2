@@ -8,6 +8,7 @@ import Posts from "./pages/Posts";
 import UserProvider from "./context/UserProvider";
 import AuthProvider from "./context/AuthProvider";
 import Login from "./pages/Login";
+import ProtectRoute from "./components/ProtectRoute";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tasks" element={<Tasks />} />
+        <Route
+         path="/tasks"
+           element={
+             <ProtectRoute>
+                <Tasks />
+            </ProtectRoute>
+             }
+          />
         <Route path="/tasks/:id" element={<TaskDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/posts" element={<Posts />} />
