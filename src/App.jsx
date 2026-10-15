@@ -10,6 +10,7 @@ import AuthProvider from "./context/AuthProvider";
 import Login from "./pages/Login";
 import ProtectRoute from "./components/ProtectRoute";
 import ToggleDemo from "./components/ToggleDemo";
+import RenderDemo from "./components/RenderDemo";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
       </Routes>
       <ToggleDemo />
+      <RenderDemo />
     </UserProvider>
     </AuthProvider>
   );
