@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import ProtectRoute from "./components/ProtectRoute";
 import ToggleDemo from "./components/ToggleDemo";
 import RenderDemo from "./components/RenderDemo";
+import MemoDemo from "./components/MemoDemo";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       </Routes>
       <ToggleDemo />
       <RenderDemo />
+      <MemoDemo />
     </UserProvider>
     </AuthProvider>
   );
