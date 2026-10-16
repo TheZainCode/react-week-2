@@ -1,15 +1,16 @@
 import { useState, useMemo } from "react";
 function MemoDemo() {
   const [count, setCount] = useState(0);
-    const numbers = Array.from({ length: 1000 }, (_, index) => index + 1);
-  const totalSum = useMemo(() => {
-    console.log("Expensive Calculation Running");
-        let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-      sum += numbers[i];
-    }
-    return sum;
-  }, []); 
+    const totalSum = useMemo(() => {
+  console.log("Expensive Calculation Running");
+
+  const numbers = Array.from(
+    { length: 1000 },
+    (_, index) => index + 1
+  );
+
+  return numbers.reduce((sum, number) => sum + number, 0);
+}, []); 
   return (
     <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
       <h2 className="text-2xl font-bold text-blue-600">useMemo Demo</h2>
